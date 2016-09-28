@@ -230,9 +230,12 @@ import com.relevantcodes.extentreports.LogStatus;
 	    Thread.sleep(2000);
 	    System.out.println("* Clicked on button to close side navigation menu");
 	    logger.log(LogStatus.INFO, "* Clicked on button to close side navigation menu");
-	    
-	    
-
+	    driver.findElement(By.id("entry-title")).clear();
+	    driver.findElement(By.id("entry-title")).sendKeys("Automation 101");
+	    Thread.sleep(2000);
+	    driver.findElement(By.id("entry-markdown-content")).clear();
+	    driver.findElement(By.id("entry-markdown-content")).sendKeys("This is my first blog post. Thank You!");
+	    Thread.sleep(3000);
       	  
  	     
        }
