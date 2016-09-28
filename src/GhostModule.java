@@ -10,7 +10,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -115,11 +117,6 @@ import com.relevantcodes.extentreports.LogStatus;
 	    driver.findElement(By.className("icon-arrow")).click();
 	    System.out.println("* Dropdown menu verified");
 	    logger.log(LogStatus.INFO, "* Dropdown menu verified");
-	/*    driver.findElement(By.xpath("//div/input")).clear();
-	    driver.findElement(By.xpath("//div/input")).sendKeys("Test text");
-	    driver.findElement(By.xpath("//div/input")).clear();
-	    System.out.println("* Search box was tested");
-	    logger.log(LogStatus.INFO, "* Search box was tested");*/
 	    Thread.sleep(2000);
 	    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//section/ul[1]/li[1]")));
 	    
@@ -199,8 +196,8 @@ import com.relevantcodes.extentreports.LogStatus;
 	    driver.findElement(By.xpath("//section/ul[2]/li[4]")).click();
 	    System.out.println("* Clicked on Tags link in side navigation");
 	    logger.log(LogStatus.INFO, "* Clicked on Tags link in side navigation menu");
-	    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[1]/div[2]")));
-	    Assert.assertTrue(driver.findElement(By.xpath("//div[1]/div[2]")).isDisplayed());
+	    wait.until(ExpectedConditions.presenceOfElementLocated(By.className("settings-menu-content")));
+	    Assert.assertTrue(driver.findElement(By.className("settings-menu-content")).isDisplayed());
 	    
 	    // Code Injection link in side nav
 	    
@@ -218,6 +215,15 @@ import com.relevantcodes.extentreports.LogStatus;
 	    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//section/section/section")));
 	    Assert.assertTrue(driver.findElement(By.xpath("//section/section/section")).isDisplayed());
 	    
+        // Search Box
+	    
+	    driver.findElement(By.xpath("//div/input")).clear();
+	    driver.findElement(By.xpath("//div/input")).sendKeys("Test text");
+	    driver.findElement(By.xpath("//div/input")).clear();
+	    System.out.println("* Search box was tested");
+	    logger.log(LogStatus.INFO, "* Search box was tested");
+	    
+	    
 	    // Labs link in side nav
 	    
 	    driver.findElement(By.xpath("//section/ul[2]/li[7]")).click();
@@ -230,11 +236,73 @@ import com.relevantcodes.extentreports.LogStatus;
 	    Thread.sleep(2000);
 	    System.out.println("* Clicked on button to close side navigation menu");
 	    logger.log(LogStatus.INFO, "* Clicked on button to close side navigation menu");
+	    
+	    
+	 
+	    
+	    
+	    // Create Post
+	    
 	    driver.findElement(By.id("entry-title")).clear();
 	    driver.findElement(By.id("entry-title")).sendKeys("Automation 101");
 	    Thread.sleep(2000);
-	    driver.findElement(By.id("entry-markdown-content")).sendKeys("This is my first blog post. Thank You!");
+	    driver.findElement(By.className("ember-text-area")).sendKeys("This is my first blog post. Thank You!");
 	    Thread.sleep(3000);
+	    driver.findElement(By.className("dropdown-toggle")).click();
+	    System.out.println("* Clicked on dropdown button to publish post");
+	    logger.log(LogStatus.INFO, "* Clicked on dropdown button to publish post");
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath(".//a[contains(text(),'Publish Now')]")).click();
+	    System.out.println("* Selected Publish Now option from dropdown");
+	    logger.log(LogStatus.INFO, "* Selected Publish Now optionn from dropdown");
+	    driver.findElement(By.className("js-publish-button")).click();
+	    System.out.println("* Clicked on Publish button");
+	    logger.log(LogStatus.INFO, "* Clicked on Publish button");
+	    Thread.sleep(2000);
+	    
+	    // Edit Post
+	    
+	    driver.findElement(By.className("btn-blue")).click();
+	    System.out.println("* Clicked on Update Post button");
+	    logger.log(LogStatus.INFO,"* Clicked on Update Post button");
+	    driver.findElement(By.className("ember-text-area")).clear();
+	    Thread.sleep(1000);
+	    driver.findElement(By.className("ember-text-area")).sendKeys("This is my first blog post edit.");
+	    Thread.sleep(2000);
+	    driver.findElement(By.className("js-publish-button")).click();
+	    System.out.println("* Clicked on UPDATE POST button");
+	    logger.log(LogStatus.INFO, "* Clicked on UPDATE POST button");
+	    Thread.sleep(2000);
+	    
+	    // Delete Post
+	    
+	    driver.findElement(By.className("dropdown-toggle")).click();
+	    System.out.println("* Clicked on dropdown button");
+	    logger.log(LogStatus.INFO, "* Clicked on dropdown button");
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath(".//a[contains(text(),'Delete Post')]")).click();
+	    System.out.println("* Clicked on Delete Post button");
+	    logger.log(LogStatus.INFO, "* Clicked on Delete Post button");
+	    Thread.sleep(2000);	
+	    driver.findElement(By.className("btn-red")).click();
+	    System.out.println("* Clicked on Delete Button in pop up modal");
+	    logger.log(LogStatus.INFO, "* Clicked on Delete Button in pop up modal");
+	    Thread.sleep(2000);
+	    driver.findElement(By.className("gh-autonav-toggle")).click();
+	    System.out.println("* Clicked on Side Nav toggle");
+	    logger.log(LogStatus.INFO, "* Clicked on Side Nav toggle");
+	    Thread.sleep(2000);
+	    driver.findElement(By.className("icon-arrow")).click();
+	    Thread.sleep(1000);
+	    System.out.println("* Clicked on drop down for sign out");
+	    logger.log(LogStatus.INFO, "* Clicked on drop down for sign out");
+	    driver.findElement(By.className("user-menu-signout")).click();
+	    Thread.sleep(4000);
+	    System.out.println("* Clicked on Sign Out");
+	    logger.log(LogStatus.INFO, "* Clicked on Sign Out");
+	    logger.log(LogStatus.PASS, "* Ghost Blog Test Case Passed");
+	    logger.log(LogStatus.INFO, "* Regression Complete");
+	    driver.close();
       	  
  	     
        }
@@ -250,7 +318,7 @@ import com.relevantcodes.extentreports.LogStatus;
 		  }
 		  report.endTest(logger);
 		  report.flush();
-		  driver.get(".\\report\\report.html");
+		  driver.get("./report/report.html");
 		  Thread.sleep(15000);
 		  System.out.println("* Screenshot above failed");
 		  report.close();

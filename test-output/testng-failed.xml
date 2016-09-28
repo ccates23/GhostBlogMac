@@ -4,17 +4,7 @@
   <test verbose="2" name="Default test">
     <classes>
       <class name="GhostModule"/>
+      <class name="utility"/>
     </classes>
   </test> <!-- Default test -->
-  <test name="Default test(failed)">
-    <classes>
-      <class name="GhostModule">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="Login"/>
-        </methods>
-      </class> <!-- GhostModule -->
-    </classes>
-  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
