@@ -56,7 +56,7 @@ import com.relevantcodes.extentreports.LogStatus;
 	    logger.assignCategory("Automate It Blog");
 	    report.addSystemInfo("Environment", "");
 	    report.addSystemInfo("Version", "1.0");
-	    report.addSystemInfo("OS", "Windows 7");
+	    report.addSystemInfo("OS", "");
 	    report.addSystemInfo("Browsers", "Chrome");
 	    report.config()
 	    .documentTitle("Ghost Blog Automation Report")
