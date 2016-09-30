@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DriverCommand;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -42,6 +43,7 @@ import com.relevantcodes.extentreports.LogStatus;
 			driver = new ChromeDriver();
 		    driver.get("https://automate-it.ghost.io/ghost/signin/");
 			driver.manage().window().maximize();
+			
 	   
 	    }
 
@@ -83,19 +85,6 @@ import com.relevantcodes.extentreports.LogStatus;
 		   System.out.println("* Clicked on Sign In button");
 		   logger.log(LogStatus.INFO, "* Clicked on Sign In button");
            
-
-	 // Take screenshot and store as a file format
-	    File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	    try {
-	     // now copy the  screenshot to desired location using copyFile //method
-	    FileUtils.copyFile(src, new File("C:\\Users\\chad.cates\\Desktop\\Automation\\chad.cates.workbench 2-16-16\\beWell\\Screenshots\\homepage.png"));
-	    }
-	     
-	    catch (IOException e)
-	     {
-	      System.out.println(e.getMessage());
-	     
-	     }
 	    
 	    
 	    /* ***Home Page Verification***
@@ -311,19 +300,10 @@ import com.relevantcodes.extentreports.LogStatus;
 	  
 	  public void tearDown(ITestResult result) throws Exception {
 		  if(result.getStatus()==ITestResult.FAILURE)
-		  {
-			  String screenshot_path = utility.captureScreenshot(driver, result.getName());
-			  String image = logger.addScreenCapture(screenshot_path);
-			  logger.log(LogStatus.FAIL, "* Title Verification",image );
-		  }
 		  report.endTest(logger);
 		  report.flush();
 		  driver.get("./report/report.html");
-		  Thread.sleep(15000);
-		  System.out.println("* Screenshot above failed");
 		  report.close();
-		  
-		  
 	    driver.quit();
 	    String verificationErrorString = verificationErrors.toString();
 	    if (!"".equals(verificationErrorString)) {
