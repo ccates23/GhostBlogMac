@@ -284,24 +284,12 @@ import com.relevantcodes.extentreports.LogStatus;
 	    logger.log(LogStatus.PASS, "* Ghost Blog Test Case Passed");
 	    logger.log(LogStatus.INFO, "* Regression Complete");
 	    driver.close();
-      	  
- 	     
+	    report.endTest(logger);
+		report.flush();
+		report.close();
+		driver.quit();
        }
 
-	  @AfterMethod 
-	  
-	  public void tearDown(ITestResult result) throws Exception {
-		  if(result.getStatus()==ITestResult.FAILURE)
-		  report.endTest(logger);
-		  report.flush();
-		  driver.get("./report/report.html");
-		  report.close();
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
-	  }
 	}
 
 
