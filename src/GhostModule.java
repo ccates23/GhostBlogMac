@@ -31,7 +31,7 @@ import com.relevantcodes.extentreports.LogStatus;
  @BeforeClass
 	  public void setUp() throws Exception {
 	  
-		  System.setProperty("webdriver.chrome.driver", "/Users/Cates/Downloads/chromedriver");
+		  System.setProperty("webdriver.chrome.driver", "jar/chromedriver");
 			driver = new ChromeDriver();
 		    driver.get("https://automate-it.ghost.io/ghost/signin/");
 			driver.manage().window().maximize();
