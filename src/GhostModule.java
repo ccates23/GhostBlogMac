@@ -2,18 +2,10 @@
 
 	
 import static org.junit.Assert.fail;
-import java.io.File;
-import java.io.IOException;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.DriverCommand;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -39,7 +31,7 @@ import com.relevantcodes.extentreports.LogStatus;
  @BeforeClass
 	  public void setUp() throws Exception {
 	  
-		  System.setProperty("webdriver.chrome.driver", "./jar/chromedriver.exe");
+		  System.setProperty("webdriver.chrome.driver", "/Users/Cates/Downloads/chromedriver");
 			driver = new ChromeDriver();
 		    driver.get("https://automate-it.ghost.io/ghost/signin/");
 			driver.manage().window().maximize();
@@ -49,7 +41,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 	  @Test 
 	  public void Login() throws Exception {
-		String Path = ".\\report\\report.html";
+		String Path = "./report/report.html";
 		report = new ExtentReports(Path, false);
 	    logger = report.startTest("Automate It Report");
 	    WebDriverWait wait = new WebDriverWait(driver, 60);
